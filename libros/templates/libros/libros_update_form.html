@@ -1,0 +1,23 @@
+{% extends 'libros/base.html' %}
+{% load static %}
+{% block title %}Editar Libro{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Editar libros</h1>
+            <div class="col-lg-2">
+                <a class="btn btn-danger nav-link" href="{% url 'libros_list' %}">Cancelar</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="" method="post">{% csrf_token %}
+                        {{form.as_table}}
+                        <button class="btn btn-info" type="submit" value="Input"> Guardar libro </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

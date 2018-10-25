@@ -1,0 +1,86 @@
+{% extends 'libros/base.html' %}
+{% load static %}
+{% block title %}Listado de libros{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Listado de libros</h1>
+            <div class="row">
+                <!-- Botón agregar libro -->
+                <div class="col-lg-2">
+                    <a class="btn btn-success nav-link" href="{% url 'libros_create' %}">Agregar libro</a>
+                </div>
+                <!-- Botón agregar biblioteca -->
+                <div class="col-lg-2">
+                    <a class="btn btn-success nav-link" href="{% url 'biblioteca_create' %}">Agregar Biblioteca</a>
+                </div>
+                <!-- Botón desplegable con la lista de bibliotecas cargadas -->
+                <div class="col-lg-8">
+                    <div class="selects">
+                    <select name="biblioteca" id="">
+                        {% for t in biblioteca_list %}
+                        <option value="{{t.id}}">{{t.nombre}}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                </div>                    
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>                                    
+                                <th>Editar</th>
+                                <th>Nombre</th>
+                                <th>Autor</th>
+                                <th>Páginas</th>
+                                <th>Opción</th>
+                                <th>ID de libros</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- libros_list es la variable que pasa django -->
+                            {% for contenido in libros_list %}
+                            <tr>
+                                <td><a class="btn btn-info btn-sm" href="{% url 'libros_update' contenido.id %}">
+                                        <i class="fa fa-edit"></i></a></td>
+                                <td>{{contenido.nombre|striptags|safe|truncatechars:"24"}}</td>
+                                <td>{{contenido.autor}}</td>
+                                <td>{{contenido.paginas}}</td>
+                                <td><a class="btn btn-info btn-sm" href="{% url 'stock_create' contenido.id %}">Stock</a></td>
+                                <td>
+                                    {{contenido.id}}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6">
+                        <table class="table table-hover">
+                                <thead>
+                                    <tr>                                    
+                                        <th>Stock</th>
+                                        <th>Nombre del libro</th>
+                                        <th>ID de stock</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- stock_list es la variable del modelo stock -->
+                                    {% for contenido2 in stock_list %}
+                                    <tr>
+                                        <td>{{contenido2.stock}}</td>
+                                        <td>{{contenido2.libro.nombre}}</td>
+                                        <td>{{contenido2.id}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
