@@ -1,0 +1,7 @@
+Proyecto con Django 2.1
+
+La idea es crear un sistema para administrar libros en diversas bibliotecas públicas. Para ello, se crea un modelo (model.py) llamado Biblioteca. Este modelo cuenta con la opción de agregar nuevas bibliotecas.
+
+Se quiere crear un modelo único dentro de models.py llamado Libros, que contenga las características de cada libro (nombre, autor, cantidad de páginas).
+
+Desde cada biblioteca, se puede acceder a la base de datos (Libros), agregar nuevos libros a dicha base de datos, pero cada biblioteca contará con un modelo llamado Stock, para administrar la cantidad de libro que contenga cada biblioteca por separado.
