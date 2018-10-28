@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse ##Genera urls
 # Create your models here.
 
 class Libros(models.Model):
@@ -20,8 +20,10 @@ class Stock(models.Model):
     stock = models.IntegerField(verbose_name="Cantidad de libros", default=0)
 
     def __str__(self):
-        # Que muestre el campo stcok
-        return self.stock
+        #### THE NAME IS GOING TO BE DISPLAYED IN THE ADMIN PANNEL ########
+        return '{0}'.format(self.stock)
+    def get_absolute_url(self):
+        return reverse('stock-detail', args=[str(self.id)])
 
 class Biblioteca(models.Model):
     nombre = models.CharField(verbose_name="Nombre de la biblioteca", max_length=200)

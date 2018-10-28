@@ -1,0 +1,27 @@
+{% extends 'libros/base.html' %}
+
+{% load static %}
+
+{% block content %}
+</br></br>
+<h1 class="text-center"> Stock disponible </h1>
+</br></br></br>
+
+<div class="container">
+
+<ul class="list-group">
+  <h4> Nombre del libro </h4>
+  <li class="list-group-item">{{ object.libro }}</li>
+  </br>
+  <h4> Cantidad disponible </h4>
+  <li class="list-group-item">{{ object.stock }}</li>
+
+
+
+
+</br>
+</ul>
+
+</br>
+</div>
+{% endblock %}

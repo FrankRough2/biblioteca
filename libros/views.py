@@ -91,3 +91,9 @@ class StockCreate(CreateView):
 
     # Indicamos que luego de crear un libro busque la página libros_list
     success_url = reverse_lazy('libros_list')
+
+
+
+class stockDetailView(DetailView):
+
+    model = Stock

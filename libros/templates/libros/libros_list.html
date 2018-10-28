@@ -48,13 +48,12 @@
                                         <i class="fa fa-edit"></i></a></td>
                                 <td>{{contenido.nombre|striptags|safe|truncatechars:"24"}}</td>
                                 <td>{{contenido.autor}}</td>
-                                <td>{{contenido.paginas}}</td>
-                                <td><a class="btn btn-info btn-sm" href="{% url 'stock_create' contenido.id %}">Stock</a></td>
-                                <td>
-                                    {{contenido.id}}
+                                <td>{{contenido.paginas}}</td><td>f</td> <td>{{contenido.id}}</td>                          {% endfor %}
+
+
                                 </td>
                             </tr>
-                            {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
@@ -71,7 +70,9 @@
                                     <!-- stock_list es la variable del modelo stock -->
                                     {% for contenido2 in stock_list %}
                                     <tr>
-                                        <td>{{contenido2.stock}}</td>
+
+                                <td><a class="btn btn-info btn-sm" href="{{ contenido2.get_absolute_url }}">{{contenido2.stock}}</a></td>
+                                
                                         <td>{{contenido2.libro.nombre}}</td>
                                         <td>{{contenido2.id}}</td>
                                     </tr>
